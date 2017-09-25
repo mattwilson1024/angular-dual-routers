@@ -1,0 +1,6 @@
+<div class="angular box">
+  <h2>{{ movie.title }}</h2>
+  <p>{{ movie.released }}</p>
+
+  <app-actor *ngFor="let actor of movie.actors" [actorName]="actor"></app-actor>
+</div>
