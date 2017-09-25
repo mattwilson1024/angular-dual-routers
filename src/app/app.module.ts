@@ -8,6 +8,7 @@ import { Ng1UpgradedComponents } from '../app-ng1/migration/ng1-upgraded-compone
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { MoviesService } from './movies-service/movies.service';
 import { MovieComponent } from './movie/movie.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
 
@@ -26,6 +27,9 @@ import { MoviesPageComponent } from './movies-page/movies-page.component';
   ],
   entryComponents: [
     AppComponent
+  ],
+  providers: [
+    MoviesService
   ]
 })
 export class AppModule {

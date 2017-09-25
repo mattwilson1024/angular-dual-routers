@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { MoviesService } from './../movies-service/movies.service';
 import { IMovie } from '../movies-service/movie';
 
 @Component({
@@ -6,31 +8,21 @@ import { IMovie } from '../movies-service/movie';
   templateUrl: './movies-page.component.html'
 })
 export class MoviesPageComponent implements OnInit {
-  public movies: IMovie[] = [
-    {
-      title: 'Superbad',
-      released: 2007,
-      actors: [
-        'Jonah Hill',
-        'Michael Cera',
-        'Seth Rogan',
-        'Emma Stone'
-      ]
-    },
-    {
-      title: 'The Matrix',
-      released: 1999,
-      actors: [
-        'Keanu Reeves',
-        'Laurence Fishburne',
-        'Carrie-Anne Moss'
-      ]
-    }
-  ];
+  public isLoading: boolean;
+  public movies: IMovie[] = [];
 
-  constructor() { }
+  constructor(private moviesService: MoviesService) { }
 
   ngOnInit() {
+    this.isLoading = true;
+
+    this.moviesService.getMovies().subscribe(
+      movies => {
+        this.isLoading = false;
+        this.movies = movies
+      },
+      err => console.error(err)
+    );
   }
 
 }

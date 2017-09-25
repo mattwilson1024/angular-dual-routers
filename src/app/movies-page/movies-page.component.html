@@ -1,5 +1,11 @@
 <div class="angular box">
+
   <h1>Movies</h1>
 
-  <app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
+  <div *ngIf="isLoading">Loading...</div>
+
+  <div *ngIf="!isLoading">
+    <app-movie *ngFor="let movie of movies" [movie]="movie"></app-movie>
+  </div>
+
 </div>
